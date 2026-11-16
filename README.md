@@ -9,20 +9,18 @@ A simple video management panel built with PHP and MySQL. Administrators can add
 
 ## Screenshots
 
-**Video list**
-![Video list](screenshots/videos.png)
-
 **Login**
 ![Login page](screenshots/login.png)
 
 **Add video**
 ![Add video page](screenshots/add_video.png)
 
+**Video list**
+![Video list](screenshots/videos.png)
+
 ## Technologies Used
-- **PHP** for the server-side logic, with **mysqli** for database access
-- **MySQL** for storing admins and videos
-- **HTML** and **CSS** for the interface
-- **JavaScript** for the delete confirmation dialog
+- **PHP** 
+- **MySQL** 
 
 ## Requirements
 - PHP 8.2 or newer (with the mysqli extension)
