@@ -1,0 +1,141 @@
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.header h1 { margin: 0; font-size: 1.6rem; }
+.header h1 a { color: inherit; text-decoration: none; }
+.header-actions { display: flex; align-items: center; gap: 20px; }
+
+.add-video a, .round-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid black;
+    background-color: #bcbcbc;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 6px;
+}
+.add-video a:hover { background-color: #999; }
+
+.logout { color: black; font-weight: bold; text-decoration: none; }
+.logout:hover { text-decoration: underline; }
+
+h2 { text-align: center; }
+
+.btn {
+    background-color: #f2f2f2;
+    border: 2px solid black;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+.btn:hover { background-color: #dcdcdc; }
+.btn-block { display: block; margin: 30px auto 0; }
+
+.alert { padding: 10px; margin: 10px auto; max-width: 600px; text-align: center; border: 2px solid; }
+.alert-error { color: #a00; border-color: #a00; background: #fde8e8; }
+.alert-success { color: #075; border-color: #075; background: #e6f6ee; }
+.alert-empty { color: #444; border-color: #444; background: #eee; }
+
+/* Forms */
+.container {
+    width: min(90%, 800px);
+    margin: 30px auto;
+    padding: 50px;
+    background-color: #fff;
+    border: 2px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.form-group { display: flex; align-items: center; justify-content: center; margin-top: 20px; gap: 10px; }
+.form-group label { flex: none; width: 9.5em; text-align: left; }
+.form-group input, .form-group textarea {
+    flex: none;
+    width: 400px;
+    max-width: 100%;
+    padding: 10px;
+    border: 2px solid black;
+    font: inherit;
+}
+.form-group textarea { min-height: 100px; resize: vertical; }
+
+.cancel-container { position: absolute; top: 5px; left: 5px; text-align: center; }
+.cancel-button { background-color: #dc3545; color: #fff; margin: 0; }
+.cancel-button:hover { background-color: #c82333; }
+.cancel-text { margin-top: 3px; font-size: 13px; }
+
+/* Footer */
+.footer {
+    margin-top: auto;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    background-color: #fff;
+    border-top: 2px solid black;
+}
+
+/* Login */
+.login { width: min(90%, 450px); text-align: center; margin-top: 90px; }
+.login h2 { margin-top: 0; }
+.login .form-group label { width: 6em; }
+.login .form-group input { width: 220px; }
+
+/* Video list */
+.video-table { width: 90%; margin: 30px auto; border-collapse: collapse; background: #fff; }
+.video-table td { border: 2px solid black; padding: 8px; vertical-align: middle; }
+.video-table .thumb { width: 256px; }
+.video-thumbnail { width: 240px; height: 135px; object-fit: cover; display: block; }
+.video-table .desc p { margin: 0 0 6px; font-size: 18px; overflow-wrap: anywhere; }
+.video-table .desc p.date { font-size: 12px; color: #555; }
+.video-table .actions { white-space: nowrap; width: 1%; }
+.video-table .actions form { display: inline; margin: 0; }
+
+.btn-move { width: 42px; height: 42px; padding: 0; border-radius: 50%; margin-right: 6px; }
+.btn-move:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+.btn-move:disabled:hover { background-color: #f2f2f2; }
+.btn-delete { margin-left: 10px; background-color: #dc3545; color: #fff; }
+.btn-delete:hover { background-color: #c82333; }
+
+:focus-visible { outline: 3px solid #1a73e8; outline-offset: 2px; }
+
+@media (max-width: 600px) {
+    .form-group { flex-direction: column; align-items: stretch; }
+    .form-group label { width: auto; }
+    .container { padding: 40px 20px 20px; }
+    .video-table, .video-table tbody, .video-table tr, .video-table td { display: block; width: 100%; }
+    .video-table tr { border: 2px solid black; margin-bottom: 10px; }
+    .video-table td { border: none; }
+}

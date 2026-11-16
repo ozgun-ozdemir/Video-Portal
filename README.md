@@ -1,40 +1,58 @@
 # Video Portal Management System
-This project is a simple Video Portal Management System built using PHP and MySQL. It allows an admin user to manage videos by adding, updating, and deleting video entries.
+
+A simple video management panel built with PHP and MySQL. Administrators can add, update, reorder and soft-delete YouTube videos.
 
 ## Features
-**User Authentication**: Admin users can log in to manage the video portal.
-**Video Management**: Admin can add, update, and delete videos.
-**Responsive Design**: The interface is designed to be user-friendly and responsive.
+- **Authentication:** Admin login with hashed passwords, and logout
+- **Video management:** Add, update, reorder and delete videos. Use the arrow buttons to move videos up or down in the list. Deleted videos are hidden, not removed from the database.
+- **Security:** Prepared statements (SQL injection protection), output escaping (XSS), CSRF tokens, session fixation protection
+
+## Screenshots
+
+**Video list**
+![Video list](screenshots/videos.png)
+
+**Login**
+![Login page](screenshots/login.png)
+
+**Add video**
+![Add video page](screenshots/add_video.png)
+
+## Technologies Used
+- **PHP** for the server-side logic, with **mysqli** for database access
+- **MySQL** for storing admins and videos
+- **HTML** and **CSS** for the interface
+- **JavaScript** for the delete confirmation dialog
 
 ## Requirements
-- PHP
-- MySQL
-- A web server
+- PHP 8.2 or newer (with the mysqli extension)
+- MySQL 8.4 or newer, or MariaDB 10.11 or newer
 
 ## Installation
-**Create the Database**:
-- Open your MySQL client and run the following SQL commands to create the database and necessary tables.
-  
-CREATE DATABASE video_portal;
+1. Create the database:
+   ```bash
+   mysql -u root -p < schema.sql
+   ```
+2. If needed, edit the connection settings in `config.php` or set the environment variables `DB_HOST`, `DB_USER`, `DB_PASS` and `DB_NAME`.
+3. Create an admin account (the password is hashed automatically):
+   ```bash
+   php create_admin.php admin YourStrongPassword
+   ```
+4. Start the server and open `http://localhost:8000`:
+   ```bash
+   php -S localhost:8000
+   ```
 
-USE video_portal;
-
-CREATE TABLE admin (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    password VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE video (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    link VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    is_deleted TINYINT(1) DEFAULT 0
-);
-
-## File Descriptions
-- **page1.php**: Login page for admin users.
-- **page2.php**: Main page for video management, displaying a list of videos.
-- **page3.php**: Page to add a new video.
-- **page4.php**: Page to update an existing video.
+## Files
+- **index.php**: Redirects to the video list
+- **login.php**: Login page
+- **videos.php**: Video list, reordering and deletion
+- **add_video.php**: Add a new video
+- **edit_video.php**: Update a video
+- **logout.php**: Logout
+- **config.php**: Database connection, session, CSRF and helper functions
+- **header.php**: Shared header bar
+- **footer.php**: Shared footer
+- **style.css**: Shared styles
+- **create_admin.php**: Create an admin from the command line
+- **schema.sql**: Database schema
